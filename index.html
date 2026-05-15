@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Career Roadmap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>AI Career Roadmap Generator</h1>
+
+        <form action="/predict" method="POST">
+
+            <input type="text" name="name" placeholder="Enter Your Name" required>
+
+            <input type="text" name="interest" placeholder="Enter Your Interest (AI, Web, Data, Cybersecurity)"
+                required>
+
+            <input type="text" name="skills" placeholder="Enter Your Skills" required>
+
+            <input type="text" name="cgpa" placeholder="Enter Your CGPA" required>
+
+            <button type="submit">Generate Roadmap</button>
+
+        </form>
+
+        {% if career %}
+
+        <div class="result">
+
+            <h2>Hello {{ name }}</h2>
+
+            <h3>Recommended Career:</h3>
+            <p>{{ career }}</p>
+
+            <h3>Your Skills:</h3>
+            <p>{{ skills }}</p>
+
+            <h3>Your CGPA:</h3>
+            <p>{{ cgpa }}</p>
+
+            <h3>Career Roadmap:</h3>
+
+            <ul>
+                {% for step in roadmap %}
+                <li>{{ step }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
